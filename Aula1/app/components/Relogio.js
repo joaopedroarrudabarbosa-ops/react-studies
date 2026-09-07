@@ -23,4 +23,4 @@ export default function Relogio() {
     }
 
     return <p>{hora.toLocaleTimeString()}</p>;
-}
+} 
