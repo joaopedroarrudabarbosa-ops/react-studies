@@ -9,6 +9,11 @@ import StatusLogin from "./components/StatusLogin"
 import Aviso from "./components/Aviso"
 import ValidacaoNome from "./components/ValidacaoNome"
 import ValidacaoLogin from "./components/ValidacaoLogin"
+import ListaNomes from "./components/ListaNomes"
+import ListUsuarios from "./components/ListUsuarios"
+import ListaFrutas from "./components/ListaFrutas"
+import ListaNomesInputs from "./components/ListaNomesInputs"
+import ListarUsuariosInput from "./components/ListarUsuariosInput"
 export default function Home () {
 //LOGICA
 
@@ -18,7 +23,7 @@ export default function Home () {
     <div>
       <h1>Estudando React</h1>
       <br />
-      <ValidacaoLogin />
+      <ListarUsuariosInput />
     </div>
   )
 } 
