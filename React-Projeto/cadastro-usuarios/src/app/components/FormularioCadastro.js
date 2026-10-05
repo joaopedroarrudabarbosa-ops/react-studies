@@ -45,7 +45,7 @@ export default function FormularioCadastro () {
         setNome("")
         setEmail("")
         setTelefone("")
-    }
+    }``
 
     const listUsuarios = usuarios.map((usuario)=> {
         return (
