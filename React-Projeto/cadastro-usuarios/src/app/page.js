@@ -3,6 +3,7 @@ import { useState } from "react";
 import InputText from "./components/InputText"
 import Button from "./components/Button"
 import UserList from "./components/UserList";
+import FilterInput from "./components/FilterInput";
 
 export default function Home () {
   const [email, setEmail] = useState("")
@@ -12,6 +13,7 @@ export default function Home () {
   const [erroNome, setErroNome] = useState(false)
   const [erroTelefone, setErroTelefone] = useState(false)
   const [usuarios, setUsuarios] = useState([])
+  const [buscar, setBuscar] = useState("")
 
   function handleNomeChange(e) {
     setNome(e.target.value)
@@ -40,6 +42,7 @@ export default function Home () {
     }
 
     const novoUsuario = {
+            id: Date.now(),
             nome,
             email,
             telefone
@@ -50,14 +53,26 @@ export default function Home () {
     setTelefone("")
   }
 
-  function handleExcluir () {
-
+  function handleBuscarChange(e) {
+    setBuscar(e.target.value)
   }
 
-  function handleEditar () {
+  const usuariosFiltrados = usuarios.filter((usuario) => {
+    return (
+      usuario.nome.toLowerCase().includes(buscar.toLowerCase()) ||
+      usuario.email.toLowerCase().includes(buscar.toLowerCase()) ||
+      usuario.telefone.toLowerCase().includes(buscar.toLowerCase()) 
+    )
+  })
+
+  function handleExcluir (id) {
+    const usuariosRestantes = usuarios.filter((usuario) => {
+      return usuario.id !== id
+    })
+
+    setUsuarios(usuariosRestantes)
 
   }
-
 
   return (
     <div>
@@ -101,7 +116,17 @@ export default function Home () {
 
       </form>
 
-      <UserList usuarios={usuarios} />
+      <FilterInput 
+        type="text"
+        placeholder="Buscar por nome, email ou telefone"
+        value={buscar}
+        onChange={handleBuscarChange}
+      />
+
+      <UserList 
+        usuarios={usuariosFiltrados} 
+        onExcluir={handleExcluir}
+      />
 
     </div>
   )

@@ -14,6 +14,7 @@ import ListUsuarios from "./components/ListUsuarios"
 import ListaFrutas from "./components/ListaFrutas"
 import ListaNomesInputs from "./components/ListaNomesInputs"
 import ListarUsuariosInput from "./components/ListarUsuariosInput"
+import BuscaUsuarios from "./components/BuscaUsuarios"
 export default function Home () {
 //LOGICA
 
@@ -23,7 +24,7 @@ export default function Home () {
     <div>
       <h1>Estudando React</h1>
       <br />
-      <ListarUsuariosInput />
+      <BuscaUsuarios />
     </div>
   )
 } 
